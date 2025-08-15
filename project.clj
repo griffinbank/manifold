@@ -37,4 +37,7 @@
                                [:id "kingmob"]
                                [:name "Matthew Davidson"]
                                [:url "http://modulolotus.net"]
-                               [:email "matthew@modulolotus.net"]]]))
+                               [:email "matthew@modulolotus.net"]]])
+  :repositories {"griffin.maven-banksy" {:url "https://griffin-852583658123.d.codeartifact.us-east-1.amazonaws.com/maven/maven-banksy/"
+                                         :username "aws"
+                                         :password :env/CODEARTIFACT_AUTH_TOKEN}})
