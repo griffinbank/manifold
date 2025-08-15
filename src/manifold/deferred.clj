@@ -1379,20 +1379,6 @@
 
 ;;;
 
-#_(utils/when-core-async
-
-    (extend-protocol Deferrable
-
-      clojure.core.async.impl.channels.ManyToManyChannel
-      (to-deferred [ch]
-        (let [d (deferred)]
-          (a/take! ch
-            (fn [msg]
-              (if (instance? Throwable msg)
-              (error! d msg)
-              (success! d msg))))
-          d))))
-
 (extend-protocol Deferrable
 
   CompletionStage

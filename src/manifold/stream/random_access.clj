@@ -1,17 +1,11 @@
 (ns manifold.stream.random-access
   {:no-doc true}
   (:require
-    [clojure.tools.logging :as log]
     [clj-commons.primitive-math :as p]
     [manifold.deferred :as d]
-    [manifold.utils :as utils]
-    [manifold.stream
-     [core :as s]
-     [graph :as g]]
-    [manifold.time :as time])
+    [manifold.stream.core :as s])
   (:import
     [java.util
-     RandomAccess
      List]
     [java.util.concurrent.atomic
      AtomicLong]))

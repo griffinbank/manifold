@@ -5,16 +5,10 @@
   (:require [manifold
              [executor :as ex]
              [deferred :as d]]
-            [clojure.core.async.impl
-             [ioc-macros :as ioc]]
+            [clojure.core.async.impl.ioc-macros :as async-runtime]
+            [clojure.core.async.impl.go :as go]
             [manifold.stream :as s])
   (:import (manifold.stream.core IEventSource)))
-
-;; a number of functions from `ioc-macros` moved to `runtime` in org.clojure/core.async "1.6.673"
-;; since they were just moved without functionality changes, continue to support both via dynamic import
-(if (find-ns 'clojure.core.async.impl.runtime)
-  (require '[clojure.core.async.impl.runtime :as async-runtime])
-  (require '[clojure.core.async.impl.ioc-macros :as async-runtime]))
 
 (defn ^:no-doc return-deferred [state value]
   (let [d (async-runtime/aget-object state async-runtime/USER-START-IDX)]
@@ -88,7 +82,7 @@
        (.execute ~executor ^Runnable
                  (^:once fn* []
                    (let [~@(mapcat (fn [[l sym]] [sym `(^:once fn* [] ~(vary-meta l dissoc :tag))]) crossing-env)
-                         f# ~(ioc/state-machine `(do ~@body) 1 [crossing-env &env] async-custom-terminators)
+                         f# ~(go/state-machine `(do ~@body) 1 [crossing-env &env] async-custom-terminators)
                          state# (-> (f#)
                                     (async-runtime/aset-all! async-runtime/USER-START-IDX d#
                                                              async-runtime/BINDINGS-IDX captured-bindings#))]
