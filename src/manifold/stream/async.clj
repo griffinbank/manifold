@@ -3,12 +3,8 @@
   (:require
     [manifold.deferred :as d]
     [clojure.core.async :as a]
-    [manifold.stream
-     [graph :as g]
-     [core :as s]]
-    [manifold
-     [executor :as executor]
-     [utils :as utils]])
+    [manifold.stream.core :as s]
+    [manifold.utils :as utils])
   (:import
     [java.util.concurrent.atomic
      AtomicReference]))

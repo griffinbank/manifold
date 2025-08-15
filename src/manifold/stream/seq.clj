@@ -4,10 +4,7 @@
     [clojure.tools.logging :as log]
     [manifold.deferred :as d]
     [manifold.utils :as utils]
-    [manifold.stream
-     [core :as s]
-     [graph :as g]]
-    [manifold.time :as time])
+    [manifold.stream.core :as s])
   (:import
     [java.util.concurrent.atomic
      AtomicReference]))

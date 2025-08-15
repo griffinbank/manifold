@@ -13,6 +13,7 @@
     [manifold.stream
      [core :as core]
      [default :as default]
+     async
      random-access
      iterator
      queue
@@ -26,20 +27,9 @@
      IEventStream]
     [java.lang.ref
      WeakReference]
-    [java.util.concurrent
-     CopyOnWriteArrayList
-     ConcurrentHashMap
-     BlockingQueue
-     ArrayBlockingQueue
-     LinkedBlockingQueue
-     ConcurrentLinkedQueue
-     TimeUnit]
     [java.util.concurrent.atomic
      AtomicReference
-     AtomicLong]
-    [java.util
-     LinkedList
-     Iterator]))
+     AtomicLong]))
 
 (set! *unchecked-math* true)
 

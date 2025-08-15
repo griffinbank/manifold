@@ -1,4 +1,4 @@
-(defproject griffinbank/manifold "0.4.4-20250811"
+(defproject griffinbank/manifold "0.4.4-20250815"
   :description "A compatibility layer for event-driven abstractions"
   :license {:name "MIT License"
             :url "http://opensource.org/licenses/MIT"}
@@ -9,17 +9,14 @@
                  [org.clj-commons/dirigiste "1.0.4"]
                  [org.clj-commons/primitive-math "1.0.0"]
                  [riddley "0.2.0"]
-                 [org.clojure/core.async "1.6.673" :scope "provided"]
+                 [org.clojure/core.async "1.7.701"]
                  [griffinbank/potemkin "0.4.9-20250811"]]
   :profiles {:dev {:dependencies [[criterium "0.4.6"]]
                    :global-vars {*warn-on-reflection* true
-                                 *unchecked-math* :warn-on-boxed}}
-             ;; core.async moved around some internal functions go-off relies on; this profile
-             ;; helps test that go-off still works both with the new namespaces and the old
-             :older-core-async {:dependencies [[org.clojure/core.async "1.5.648" :scope "provided"]]}}
+                                 *unchecked-math* :warn-on-boxed}}}
   :test-selectors {:default #(not
-                               (some #{:benchmark :stress}
-                                 (cons (:tag %) (keys %))))
+                              (some #{:benchmark :stress}
+                                    (cons (:tag %) (keys %))))
                    :benchmark :benchmark
                    :stress #(or (:stress %) (= :stress (:tag %)))
                    :all (constantly true)}
@@ -28,7 +25,6 @@
                        "-XX:-OmitStackTraceInFastThrow"
                        "-Xmx2g"
                        "-XX:NewSize=1g"]
-  :javac-options ["-target" "1.8" "-source" "1.8"]
 
   :pom-addition ([:organization
                   [:name "CLJ Commons"]

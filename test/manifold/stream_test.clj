@@ -6,16 +6,13 @@
     [manifold.test-utils :refer :all]
     [manifold.stream :as s]
     [manifold.stream.default :as sd]
-    [manifold.utils :as utils]
     [manifold.deferred :as d]
     [manifold.executor :as ex])
   (:import
     [java.util.concurrent
-     Executors
      BlockingQueue
      ArrayBlockingQueue
-     SynchronousQueue
-     TimeUnit]))
+     SynchronousQueue]))
 
 (defn run-sink-source-test [gen]
   (let [x      (gen)
