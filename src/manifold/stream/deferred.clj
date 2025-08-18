@@ -8,11 +8,7 @@
     [manifold.deferred
      IDeferred]
     [java.util.concurrent.atomic
-     AtomicReference]
-    [clojure.lang
-     IPending]
-    [java.util.concurrent
-     Future]))
+     AtomicReference]))
 
 (s/def-sink DeferredSink
   [d]

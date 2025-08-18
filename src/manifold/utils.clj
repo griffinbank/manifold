@@ -112,16 +112,6 @@
 
 ;;;
 
-(defmacro when-core-async
-  "Suitable for altering behavior (like extending protocols), but not defs"
-  [& body]
-  (when (try
-          (require '[clojure.core.async])
-          true
-          (catch Exception _
-            false))
-    `(do ~@body)))
-
 (defmacro when-class [class & body]
   (when (try
           (Class/forName (name class))

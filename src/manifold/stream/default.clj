@@ -9,7 +9,6 @@
     [manifold.stream
      [graph :as g]
      [core :as s]]
-    [manifold.time :as time]
     [potemkin.types :refer [deftype+]]
     [clj-commons.primitive-math :as p])
   (:import
@@ -17,10 +16,6 @@
      LinkedList
      ArrayDeque
      Queue]
-    [java.util.concurrent
-     BlockingQueue
-     ArrayBlockingQueue
-     LinkedBlockingQueue]
     [java.util.concurrent.atomic
      AtomicLong]))
 
